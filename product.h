@@ -11,4 +11,5 @@ class Product {
         int getProductQuantity();
         void setProductName(std::string newName);
         void setProductQuantity(int newQuantity);
+        int getProductPrice();
 };

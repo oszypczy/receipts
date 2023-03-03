@@ -1,4 +1,6 @@
 #include "product.h"
+#include <map>
+#include <vector>
 
 Product::Product(std::string name, int quantity) {
     productName = name;
@@ -19,4 +21,18 @@ void Product::setProductName(std::string newName) {
 
 void Product::setProductQuantity(int newQuantity) {
     productQuantity = newQuantity;
+}
+
+int Product::getProductPrice(){
+    std::map<std::string, int> productsDatabase;
+    productsDatabase["Bananas"] = 499;
+    productsDatabase["Oranges"] = 800;
+    productsDatabase["Milk"] = 315;
+    if (productsDatabase.count(productName)>=1) {
+        return productQuantity * productsDatabase[productName];
+    } else {
+        ::srand(time(nullptr));
+        productsDatabase[productName] = (::rand() % 1000) + 1;
+        return productQuantity * productsDatabase[productName];
+    }
 }
